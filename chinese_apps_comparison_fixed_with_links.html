@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chinese Learning Apps for Lily</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-gray-100">
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState } = React;
+
+    const ChineseAppsComparison = () => {
+      const [selectedApp, setSelectedApp] = useState(null);
+
+      const apps = [
+        {
+          name: "Galaxy Kids Chinese",
+          ageRange: "3-8",
+          website: "https://chinese.galaxykids.ai/",
+          appStore: "https://apps.apple.com/sg/app/learn-chinese-games-for-kids/id1597412004",
+          playStore: "https://play.google.com/store/apps/details?id=com.galaxyacademy.gac",
+          description: "An innovative app with AI tutors providing interactive conversations and instant feedback on pronunciation and grammar.",
+          keyFeatures: [
+            "AI tutors for interactive conversation",
+            "Real-time grammar correction",
+            "Pronunciation feedback",
+            "Game-based lessons with 1,000+ words",
+            "Parent dashboard for progress tracking"
+          ],
+          bestFor: "Speaking practice and interactive conversations",
+          ratings: {
+            ios: "4.6 out of 5 (54 ratings)",
+            android: "3.6 out of 5 (64 reviews)"
+          }
+        },
+        {
+          name: "Maomi Stars",
+          ageRange: "4-7",
+          website: "https://www.maomistars.com/",
+          appStore: "https://apps.apple.com/us/app/maomi-stars-kids-chinese-game/id1524729048",
+          playStore: null,
+          description: "A gameified Chinese literacy adventure created by bilingual parents, focusing on foundational Chinese characters through playful missions.",
+          keyFeatures: [
+            "Mission-based character learning",
+            "400 common characters",
+            "Multiple learning modes (listening, writing, speaking)",
+            "Reward system with StarCoins",
+            "Support for both Mandarin and Cantonese"
+          ],
+          bestFor: "Character learning through gamification",
+          ratings: {
+            ios: "4.8 out of 5 (76 ratings)",
+            android: "Not available on Google Play Store"
+          }
+        },
+        {
+          name: "iHuman Chinese",
+          ageRange: "6-8",
+          website: "https://www.ihuman.com/",
+          appStore: "https://apps.apple.com/us/app/ihuman-chinese/id1139733348",
+          playStore: "https://play.google.com/store/apps/details?id=com.hongen.app.word",
+          description: "A comprehensive Chinese learning app that takes learners from zero reading knowledge to impressive literacy through stories and animations.",
+          keyFeatures: [
+            "1,200+ Chinese characters",
+            "130 animated picture books",
+            "Multi-sensory learning (animations, games, songs)",
+            "Character writing practice",
+            "Etymology and character evolution"
+          ],
+          bestFor: "Long-term character learning and literacy development",
+          ratings: {
+            ios: "4.8 out of 5 (5,100 ratings)",
+            android: "3.7 out of 5 (127 reviews)"
+          }
+        },
+        {
+          name: "HelloChinese",
+          ageRange: "8+",
+          website: "https://www.hellochinese.cc/",
+          appStore: "https://apps.apple.com/us/app/hellochinese-learn-chinese/id1001507516",
+          playStore: "https://play.google.com/store/apps/details?id=com.hellochinese",
+          description: "A highly acclaimed all-in-one Mandarin learning app designed to take beginners from scratch to conversational level with cultural insights.",
+          keyFeatures: [
+            "Game-based comprehensive curriculum",
+            "2,000+ videos by native speakers",
+            "1,000+ graded stories",
+            "Speech recognition for pronunciation",
+            "Character writing practice",
+            "HSK-aligned curriculum"
+          ],
+          bestFor: "Complete curriculum for independent learners",
+          ratings: {
+            ios: "4.8 out of 5 (730 ratings)",
+            android: "4.9 out of 5 (361,000 reviews)"
+          }
+        },
+        {
+          name: "Studycat Fun Chinese",
+          ageRange: "3-10",
+          website: "https://studycat.com/",
+          appStore: "https://apps.apple.com/us/app/learn-chinese-studycat/id547571511",
+          playStore: "https://play.google.com/store/apps/details?id=com.pumkin.funchinese",
+          description: "A playful introduction to Mandarin that feels like mini-games rather than lessons, ideal for building basic vocabulary in a stress-free way.",
+          keyFeatures: [
+            "30+ simple language games",
+            "5+ thematic lessons",
+            "Basic vocabulary and phrases",
+            "Child-friendly interface",
+            "Multiple language support (15 interface languages)"
+          ],
+          bestFor: "Supplementary vocabulary practice",
+          ratings: {
+            ios: "4.5 out of 5 (196 ratings)",
+            android: "4.4 out of 5 (1,750 reviews)"
+          }
+        },
+        {
+          name: "Chineasy",
+          ageRange: "6+",
+          website: "https://www.chineasy.com/",
+          appStore: "https://apps.apple.com/us/app/chineasy-learn-chinese-easily/id1318941705",
+          playStore: "https://play.google.com/store/apps/details?id=com.chineasy.cards",
+          description: "A unique, artsy approach to learning Chinese using beautiful illustrations that transform characters into memorable pictures.",
+          keyFeatures: [
+            "Visual character illustrations",
+            "Interactive flashcards and quizzes",
+            "Story Builder creative mode",
+            "Cultural explanations",
+            "Character etymology"
+          ],
+          bestFor: "Creative learning and visual memory of characters",
+          ratings: {
+            ios: "4.8 out of 5 (9,300 ratings)",
+            android: "4.3 out of 5 (2,660 reviews)"
+          }
+        }
+      ];
+
+      return (
+        <div className="p-6 max-w-7xl mx-auto bg-white text-sm">
+          <h1 className="text-3xl font-bold mb-6 text-center text-blue-600">Chinese Learning Apps for Lily</h1>
+          <table className="table-auto w-full border mb-8 text-left">
+            <thead>
+              <tr className="bg-gray-100 text-sm">
+                <th className="border px-3 py-2 font-semibold">App</th>
+                <th className="border px-3 py-2 font-semibold">Age</th>
+                <th className="border px-3 py-2 font-semibold">iOS Rating</th>
+                <th className="border px-3 py-2 font-semibold">Android Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              {apps.map((app, i) => (
+                <tr key={i} className={i % 2 ? 'bg-gray-50' : ''}>
+                  <td className="border px-3 py-2 whitespace-normal">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <a href={app.website} className="text-blue-600 font-semibold hover:underline" target="_blank">{app.name}</a>
+                      <button onClick={() => setSelectedApp(app)} className="bg-blue-600 text-white px-2 py-1 rounded text-xs">Overview</button>
+                    </div>
+                  </td>
+                  <td className="border px-3 py-2">{app.ageRange}</td>
+                  <td className="border px-3 py-2">
+                    <a href={app.appStore} target="_blank" className="text-blue-600 hover:underline">{app.ratings.ios}</a>
+                  </td>
+                  <td className="border px-3 py-2">
+                    {app.playStore ? (
+                      <a href={app.playStore} target="_blank" className="text-blue-600 hover:underline">{app.ratings.android}</a>
+                    ) : (
+                      <span className="text-gray-500 italic">{app.ratings.android}</span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          {selectedApp && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+              <div className="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-lg border border-black">
+                <h2 className="text-2xl font-bold text-blue-600 mb-2">{selectedApp.name}</h2>
+                <p className="mb-4 text-gray-700">{selectedApp.description}</p>
+                <ul className="list-disc ml-6 mb-4">
+                  {selectedApp.keyFeatures.map((f, i) => <li key={i} className="mb-1">{f}</li>)}
+                </ul>
+                <p><strong>Best For:</strong> {selectedApp.bestFor}</p>
+                <div className="flex justify-end mt-6">
+                  <button onClick={() => setSelectedApp(null)} className="text-gray-600 hover:text-black text-xl font-bold">✕</button>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    };
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<ChineseAppsComparison />);
+  </script>
+</body>
+</html>
